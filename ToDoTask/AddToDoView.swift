@@ -22,12 +22,13 @@ struct AddToDoView: View {
                 .textFieldStyle(DefaultTextFieldStyle())
             DatePicker("dueDate", selection: $dueDate, displayedComponents: .date)
                 .datePickerStyle(GraphicalDatePickerStyle())
+        SliderView()
             
             Button {
                 // ボタンをタップした時のアクション
                 
             } label: {
-                Text("Button")
+                Text("保存")
                     .padding()
             }
             .fontWeight(.semibold)

@@ -35,22 +35,25 @@ struct SliderView: View {
             Text(moodEmoji(for: moodLevel))
                 .font(.largeTitle)
                 .padding()
+            Text("Mood Level: \(moodLevel)")
+                          .font(.headline)
+                          .padding()
             
             // 保存ボタン
-            Button(action: {
-                saveMood(moodLevel)
-            }) {
-                Text("保存")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
-            }
-            if let message = savedMessage {
-                            Text(message)
-                                .padding()
-                                .foregroundColor(.green)
-                        }
+//            Button(action: {
+//                saveMood(moodLevel)
+//            }) {
+//                Text("保存")
+//                    .padding()
+//                    .background(Color.blue)
+//                    .foregroundColor(.white)
+//                    .cornerRadius(8)
+//            }
+//            if let message = savedMessage {
+//                            Text(message)
+//                                .padding()
+//                                .foregroundColor(.green)
+//                        }
             
         }
     }
@@ -75,6 +78,7 @@ struct SliderView: View {
     func saveMood(_ level: Int) {
         // ここで気分の数値を保存する処理を実装
         savedMessage = "ストレス度\(level)を保存しました"
+        
         
        
         
