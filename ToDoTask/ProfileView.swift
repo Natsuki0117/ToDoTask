@@ -24,7 +24,7 @@ struct ProfileView: View {
             .navigationTitle("Profile")
         }
         .sheet(isPresented: $isShowingSheet) {
-            AddToDoView()
+            AddToDoView(moodlabel: Int())
         }
     }
 }

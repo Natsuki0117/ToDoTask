@@ -11,6 +11,10 @@ struct AddToDoView: View {
     
     @State var title = ""
     @State var dueDate = Date()
+    @State var time = ""
+    @State var moodlabel: Int
+    @State private var DoTime: String = "30"
+    
     
     @Environment(\.dismiss) private var dismiss
     
@@ -22,10 +26,21 @@ struct AddToDoView: View {
                 .textFieldStyle(DefaultTextFieldStyle())
             DatePicker("dueDate", selection: $dueDate, displayedComponents: .date)
                 .datePickerStyle(GraphicalDatePickerStyle())
-        SliderView()
+//            日本時間にします。絶対
+           SliderView()
+            TextField("time", text: $DoTime)
+                .keyboardType(.numberPad)
+                .textFieldStyle(DefaultTextFieldStyle())
+                .padding()
             
             Button {
+                
+                print("\(title)")
+                print("\(dueDate)")
+                print("\(moodlabel)")
+                print("\(DoTime)")
                 // ボタンをタップした時のアクション
+                dismiss()
                 
             } label: {
                 Text("保存")
@@ -45,7 +60,7 @@ struct AddToDoView: View {
 }
     
 #Preview {
-    AddToDoView()
+    AddToDoView(moodlabel: Int())
 }
 
     

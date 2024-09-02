@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct SliderView: View {
+
     @State private var moodLevel: Int = 5
     @State var savedMessage: String? = nil
     let minLevel = 0
     let maxLevel = 10
     
     
-    
     var body: some View {
         VStack {
-            Text("今日の気分をスライダーで表してください")
+            Text("タスクの重さ")
                 .font(.headline)
             
             // スライダーの実装
@@ -29,60 +29,36 @@ struct SliderView: View {
                     moodLevel = Int(newValue.rounded())
                 }
             ), in: Double(minLevel)...Double(maxLevel), step: 1)
-                .padding()
+            .padding()
             
             // スライダーの値に応じた絵文字を表示
             Text(moodEmoji(for: moodLevel))
                 .font(.largeTitle)
                 .padding()
             Text("Mood Level: \(moodLevel)")
-                          .font(.headline)
-                          .padding()
-            
-            // 保存ボタン
-//            Button(action: {
-//                saveMood(moodLevel)
-//            }) {
-//                Text("保存")
-//                    .padding()
-//                    .background(Color.blue)
-//                    .foregroundColor(.white)
-//                    .cornerRadius(8)
-//            }
-//            if let message = savedMessage {
-//                            Text(message)
-//                                .padding()
-//                                .foregroundColor(.green)
-//                        }
-            
+                .font(.headline)
+                .padding()
         }
+        
     }
     
     func moodEmoji(for level: Int) -> String {
         switch level {
         case 0...2:
-            return "😢"
+            return "☺️"
         case 3...4:
-            return "😟"
+            return "😀"
         case 5...6:
             return "😐"
         case 7...8:
-            return "🙂"
+            return "😖"
         case 9...10:
-            return "😊"
+            return "😤"
         default:
             return "😐"
         }
     }
     
-    func saveMood(_ level: Int) {
-        // ここで気分の数値を保存する処理を実装
-        savedMessage = "ストレス度\(level)を保存しました"
-        
-        
-       
-        
-    }
 }
 
 struct MoodSliderView_Previews: PreviewProvider {
