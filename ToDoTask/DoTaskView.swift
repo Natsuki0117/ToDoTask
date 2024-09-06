@@ -11,7 +11,8 @@ struct DoTaskView: View {
     var body: some View {
         NavigationView{
             VStack{
-                SliderView()
+//                SliderView()
+                EmptyView()
             }
             .navigationTitle("AI　タスク選定")
         }
