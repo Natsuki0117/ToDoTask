@@ -7,13 +7,13 @@
 
 import SwiftUI
 import FirebaseCore
-
+import FirebaseAuth
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
-        FirebaseAuthManager.anonymousSignIn()
+        // ここで匿名サインインを行う場合は、ViewModelを作成してから呼び出す必要があります。
         return true
     }
 }
@@ -21,16 +21,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct EmailSignInExampleApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    //    @StateObject var vm = AuthViewModel()
-    
+    @StateObject var vm = AuthViewModel() // @StateObjectをここで定義
+
     var body: some Scene {
         WindowGroup {
-            // ログイン状態によって画面遷移するページを変更する
-            //            if vm.isAuthenticated {
-            MainView()
-            //            } else {
-            //                ContentView(vm: vm)
-            //            }
+            MainView() // AuthViewModelを直接渡さず、EnvironmentObjectで設定します。
+                .environmentObject(vm) // ここでEnvironmentObjectとして渡します
         }
     }
 }
+

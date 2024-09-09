@@ -7,7 +7,7 @@
 
 import FirebaseFirestore
 
-struct TaskItem: Codable{
+struct TaskItem: Codable {
     @DocumentID var id: String?
     var userid: String
     var name: String
@@ -16,13 +16,12 @@ struct TaskItem: Codable{
     var dueDate: Date
 }
 
-extension Encodable{
+extension Encodable {
     var encoded: [String: Any] {
-        get throws{
+        get throws {
             try Firestore.Encoder().encode(self)
         }
     }
 }
-
 
 

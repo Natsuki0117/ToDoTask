@@ -9,20 +9,20 @@ import SwiftUI
 
 struct SignUpView: View{
 
-//    @State var email: String = ""
-//    @State var password: String = ""
-//    @StateObject var vm = AuthViewModel()
+    @State var email: String = ""
+    @State var password: String = ""
+    @StateObject var vm = AuthViewModel()
     
     var body: some View {
         Form{
-//            TextField("Email", text: $email)
-//                .textFieldStyle(RoundedBorderTextFieldStyle())
-//            SecureField("Password", text: $password)
-//                .textFieldStyle(RoundedBorderTextFieldStyle())
+            TextField("Email", text: $email)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            SecureField("Password", text: $password)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
             
             Button{
                 
-//    vm.signUp(email: email, password: password)
+    vm.signUp(email: email, password: password)
                 
             } label: {
                     Text("アカウントを作る")
@@ -34,3 +34,4 @@ struct SignUpView: View{
     
  
 }
+
