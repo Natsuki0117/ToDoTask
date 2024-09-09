@@ -25,7 +25,6 @@
 		807BA0FC2C75F73F002EBB9B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 807BA0FB2C75F73F002EBB9B /* FirebaseAnalytics */; };
 		807BA0FE2C75F73F002EBB9B /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 807BA0FD2C75F73F002EBB9B /* FirebaseAuth */; };
 		807BA1002C75F73F002EBB9B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 807BA0FF2C75F73F002EBB9B /* FirebaseFirestore */; };
-		807BA1022C75FD88002EBB9B /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BA1012C75FD88002EBB9B /* SliderView.swift */; };
 		807BA1042C7F1F42002EBB9B /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BA1032C7F1F42002EBB9B /* FirebaseAuthManager.swift */; };
 		807BA1062C7F20D6002EBB9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 807BA1052C7F20D6002EBB9B /* GoogleService-Info.plist */; };
 		807BA1082C7F2EC5002EBB9B /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BA1072C7F2EC5002EBB9B /* FirestoreClient.swift */; };
@@ -49,7 +48,6 @@
 		807BA0EE2C74FEC1002EBB9B /* DoTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoTaskView.swift; sourceTree = "<group>"; };
 		807BA0F02C750DF7002EBB9B /* AddToDoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoView.swift; sourceTree = "<group>"; };
 		807BA0F42C75F1A0002EBB9B /* TaskItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItem.swift; sourceTree = "<group>"; };
-		807BA1012C75FD88002EBB9B /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		807BA1032C7F1F42002EBB9B /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
 		807BA1052C7F20D6002EBB9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		807BA1072C7F2EC5002EBB9B /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				807BA0EA2C74F374002EBB9B /* ProfileView.swift */,
 				807BA0EE2C74FEC1002EBB9B /* DoTaskView.swift */,
 				807BA0F02C750DF7002EBB9B /* AddToDoView.swift */,
-				807BA1012C75FD88002EBB9B /* SliderView.swift */,
 				807BA0F42C75F1A0002EBB9B /* TaskItem.swift */,
 				807BA1072C7F2EC5002EBB9B /* FirestoreClient.swift */,
 				807BA10D2C8EE31E002EBB9B /* LoginView.swift */,
@@ -177,6 +174,7 @@
 			mainGroup = 807BA0A82C6D218C002EBB9B;
 			packageReferences = (
 				807BA0FA2C75F73F002EBB9B /* XCRemoteSwiftPackageReference "firebase-ios-sdk-xcframeworks" */,
+				807BA11A2C8F3DC4002EBB9B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 807BA0B22C6D218C002EBB9B /* Products */;
 			projectDirPath = "";
@@ -206,7 +204,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				807BA1102C8EE329002EBB9B /* LogoutView.swift in Sources */,
-				807BA1022C75FD88002EBB9B /* SliderView.swift in Sources */,
 				807BA0E72C738930002EBB9B /* HeaderView.swift in Sources */,
 				807BA0D72C6D236D002EBB9B /* AppDelegate.swift in Sources */,
 				807BA10E2C8EE31E002EBB9B /* LoginView.swift in Sources */,
@@ -438,6 +435,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 11.1.0;
+			};
+		};
+		807BA11A2C8F3DC4002EBB9B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = Main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
