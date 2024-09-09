@@ -1,15 +1,8 @@
-//
-//  LogoutView.swift
-//  ToDoTask
-//
-//  Created by 金井菜津希 on 2024/09/09.
-//
-
-import Foundation
 import SwiftUI
 
 struct LogoutView: View {
     @EnvironmentObject var vm: AuthViewModel
+    @State private var isLoggedOut = false // ログアウト状態を管理
 
     var body: some View {
         VStack {
@@ -28,12 +21,18 @@ struct LogoutView: View {
                     .cornerRadius(10)
             }
             .padding()
+            
+            // ログアウト後にLoginViewに移動
+            NavigationLink(destination: LoginView(), isActive: $isLoggedOut) {
+                LoginView()
+            }
         }
         .navigationBarBackButtonHidden(true) // 戻るボタンを非表示
     }
 
     private func logOut() {
-        vm.logout() // AuthViewModelのlogoutメソッドを呼び出す
+        vm.logout() // ログアウト処理
+        isLoggedOut = true // ログアウト後に状態を変更
     }
 }
 
@@ -41,4 +40,3 @@ struct LogoutView: View {
     LogoutView().environmentObject(AuthViewModel())
 }
 
-//test

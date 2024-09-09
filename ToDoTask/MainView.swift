@@ -12,7 +12,8 @@ struct MainView: View {
                 Text("Logout")
                     .foregroundColor(.red)
             }
-            
+            .padding() // パディングを追加して余白を確保
+
             TabView {
                 ProfileView()
                     .tabItem {
@@ -36,7 +37,3 @@ struct MainView: View {
         .environmentObject(AuthViewModel()) // プレビュー用の環境オブジェクト
 }
 
-
-#Preview {
-    MainView()
-}
