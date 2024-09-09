@@ -13,54 +13,51 @@ class FirestoreClient {
     
     static var tasks: CollectionReference = Firestore.firestore().collection("tasks")
     
-    //全部async awaitで！！！　↓こういう書き方
-    //    static func aaaa() {
-    //        Task {
-    //            do {
-    //                try await ....
-    //            } catch {
-    //                print(error.localizedDescription)
-    //            }
-    //        }
-    //    }
-    
-    //    static func fetchTags() async throws -> [Tag] {
-    //        guard FirebaseAuthManager.shared.user != nil else { return [] }
-    //        return try await tags.getDocuments().documents.compactMap { try? $0.data(as: Tag.self) }
-    //    }
-    
-    static func fetchAll() async -> [TaskItem] {
-        guard let userId = Auth.auth().currentUser?.uid else{ return[]}
-        do {
-            //ユーザーのuserIdでフィルターする
-            return try await tasks.whereField("userId", isEqualTo: userId).getDocuments().documents.compactMap { try? $0.data(as: TaskItem.self) }
+    // データをFirestoreに追加する関数
+    static func add(taskName: String, sliderValue: Double, taskTitle: String, dueDate: Date, doTime: String) {
+        Task {
+            guard let userId = Auth.auth().currentUser?.uid else {
+                print("ユーザーがログインしていません")
+                return
+            }
             
-        } catch {
-            print("aaa")
-            return []
-        }
-        
-    }
-    
-    static func add(task: TaskItem) {
-        Task{
+            // 日本標準時 (JST) に変換
+            let jstTimeZone = TimeZone(identifier: "Asia/Tokyo")!
+            var calendar = Calendar.current
+            calendar.timeZone = jstTimeZone
+            
+            let jstDueDate = calendar.date(bySettingHour: Calendar.current.component(.hour, from: dueDate),
+                                           minute: Calendar.current.component(.minute, from: dueDate),
+                                           second: Calendar.current.component(.second, from: dueDate),
+                                           of: dueDate,
+                                           matchingPolicy: .nextTime,
+                                           repeatedTimePolicy: .first,
+                                           direction: .forward)!
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            formatter.timeZone = jstTimeZone
+            let jstDueDateString = formatter.string(from: jstDueDate)
+            
+            let taskData: [String: Any] = [
+                "userId": userId,
+                "name": taskName,
+                "slider": sliderValue,
+                "title": taskTitle,
+                "dueDate": jstDueDateString,  // JST形式で保存
+                "doTime": doTime
+            ]
+            
             do {
-                try await tasks.addDocument(data: task.encoded)
+                try await tasks.addDocument(data: taskData)
+                print("タスクが正常に保存されました")
             } catch {
-                print(error.localizedDescription)
+                print("タスクの保存中にエラーが発生しました: \(error.localizedDescription)")
             }
         }
-        
     }
-    
-    //    static func update(task: TaskItem) {
-    //        tasks.document(...).set
-    ////        tasks.document("id").setData(..)
-    //    }
-    //
-    //    static func delete(task: TaskItem) {
-    //        tasks....
-    ////        tasks.document("id").delete()
-    //    }
-    
 }
+//test
+
+//aaa
+

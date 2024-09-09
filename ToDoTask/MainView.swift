@@ -1,26 +1,19 @@
-//
-//  SecondView.swift
-//  ToDoTask
-//
-//  Created by 金井菜津希 on 2024/08/15.
-//
-
 import SwiftUI
+import FirebaseAuth // 必要なインポート
 
 struct MainView: View {
-//    @ObservedObject var vm: AuthViewModel
+    @EnvironmentObject var vm: AuthViewModel // EnvironmentObjectを使用する
 
-    
-//    todo画面作る、sliderこっちに持ってくる、期限作る、タイトル、かかる時間、保存ボタン
-    
-//自分のタスク進捗度合い（今日何時間できたのか、今週どれくらいやったのか）、（友人の進捗度合い）、(フレンドリスト)
-  
-    //AIがタスク選んでくれる画面、めちゃめちゃアニメーション派手に
-    
     var body: some View {
         VStack {
-   
-            TabView{
+            Button(action: {
+                vm.logout() // logoutメソッドを呼び出す
+            }) {
+                Text("Logout")
+                    .foregroundColor(.red)
+            }
+            
+            TabView {
                 ProfileView()
                     .tabItem {
                         Label("Main", systemImage: "square.and.pencil")
@@ -33,12 +26,16 @@ struct MainView: View {
                     .tabItem {
                         Label("DoTask", systemImage: "trash.circle")
                     }
-               
             }
         }
-    
     }
 }
+
+#Preview {
+    MainView()
+        .environmentObject(AuthViewModel()) // プレビュー用の環境オブジェクト
+}
+
 
 #Preview {
     MainView()

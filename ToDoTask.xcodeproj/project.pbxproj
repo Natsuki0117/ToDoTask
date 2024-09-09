@@ -29,6 +29,8 @@
 		807BA1042C7F1F42002EBB9B /* FirebaseAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BA1032C7F1F42002EBB9B /* FirebaseAuthManager.swift */; };
 		807BA1062C7F20D6002EBB9B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 807BA1052C7F20D6002EBB9B /* GoogleService-Info.plist */; };
 		807BA1082C7F2EC5002EBB9B /* FirestoreClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BA1072C7F2EC5002EBB9B /* FirestoreClient.swift */; };
+		807BA10E2C8EE31E002EBB9B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BA10D2C8EE31E002EBB9B /* LoginView.swift */; };
+		807BA1102C8EE329002EBB9B /* LogoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807BA10F2C8EE329002EBB9B /* LogoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		807BA1032C7F1F42002EBB9B /* FirebaseAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthManager.swift; sourceTree = "<group>"; };
 		807BA1052C7F20D6002EBB9B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		807BA1072C7F2EC5002EBB9B /* FirestoreClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreClient.swift; sourceTree = "<group>"; };
+		807BA10D2C8EE31E002EBB9B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		807BA10F2C8EE329002EBB9B /* LogoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				807BA1012C75FD88002EBB9B /* SliderView.swift */,
 				807BA0F42C75F1A0002EBB9B /* TaskItem.swift */,
 				807BA1072C7F2EC5002EBB9B /* FirestoreClient.swift */,
+				807BA10D2C8EE31E002EBB9B /* LoginView.swift */,
+				807BA10F2C8EE329002EBB9B /* LogoutView.swift */,
 				807BA1052C7F20D6002EBB9B /* GoogleService-Info.plist */,
 				807BA0B82C6D218F002EBB9B /* Assets.xcassets */,
 				807BA0BA2C6D218F002EBB9B /* Preview Content */,
@@ -199,9 +205,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				807BA1102C8EE329002EBB9B /* LogoutView.swift in Sources */,
 				807BA1022C75FD88002EBB9B /* SliderView.swift in Sources */,
 				807BA0E72C738930002EBB9B /* HeaderView.swift in Sources */,
 				807BA0D72C6D236D002EBB9B /* AppDelegate.swift in Sources */,
+				807BA10E2C8EE31E002EBB9B /* LoginView.swift in Sources */,
 				807BA0E02C6D28B0002EBB9B /* MainView.swift in Sources */,
 				807BA0D52C6D233C002EBB9B /* AuthViewModel.swift in Sources */,
 				807BA0ED2C74F562002EBB9B /* HomeView.swift in Sources */,

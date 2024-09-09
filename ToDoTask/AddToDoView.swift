@@ -15,23 +15,24 @@ struct AddToDoView: View {
     @State var moodLevel: Int = 5
     @State private var DoTime: String = "30"
     
-    
     @Environment(\.dismiss) private var dismiss
-    
     
     var body: some View {
         
         Form {
+            // タイトル入力
             TextField("Title", text: $title)
                 .textFieldStyle(DefaultTextFieldStyle())
+            
+            // 期限の入力（DatePicker）
             DatePicker("dueDate", selection: $dueDate, displayedComponents: .date)
                 .datePickerStyle(GraphicalDatePickerStyle())
-//            日本時間にします。絶対
+            
+            // タスクの重さをスライダーで選択
             VStack {
                 Text("タスクの重さ")
                     .font(.headline)
                 
-                // スライダーの実装
                 Slider(value: Binding(
                     get: {
                         Double(moodLevel)
@@ -42,7 +43,6 @@ struct AddToDoView: View {
                 ), in: 0...10, step: 1)
                 .padding()
                 
-                // スライダーの値に応じた絵文字を表示
                 Text(moodEmoji(for: moodLevel))
                     .font(.largeTitle)
                     .padding()
@@ -50,18 +50,28 @@ struct AddToDoView: View {
                     .font(.headline)
                     .padding()
             }
-            TextField("time", text: $DoTime)
-                .keyboardType(.numberPad)
-                .textFieldStyle(DefaultTextFieldStyle())
-                .padding()
             
-            Button {
+            // かかる時間ラベルとDoTime
+            VStack {
+                Text("かかる時間")
+                    .font(.headline)
                 
-                print("\(title)")
-                print("\(dueDate)")
-                print("\(moodLevel)")
-                print("\(DoTime)")
-                // ボタンをタップした時のアクション
+                TextField("時間（分単位）", text: $DoTime)
+                    .keyboardType(.numberPad)
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .padding()
+            }
+            
+            // 保存ボタン
+            Button {
+                // Firestoreにデータを保存
+                FirestoreClient.add(taskName: title, sliderValue: Double(moodLevel), taskTitle: "Task", dueDate: dueDate, doTime: DoTime)
+                
+                print("Title: \(title)")
+                print("Due Date: \(dueDate)")
+                print("Mood Level: \(moodLevel)")
+                print("Do Time: \(DoTime)")
+                
                 dismiss()
                 
             } label: {
@@ -74,12 +84,10 @@ struct AddToDoView: View {
             .background(Color(.blue))
             .cornerRadius(24)
             .frame(maxWidth: .infinity, alignment: .center)
-            
-            
         }
-        
     }
     
+    // Moodレベルに応じた絵文字を返す関数
     func moodEmoji(for level: Int) -> String {
         switch level {
         case 0...2:
@@ -97,10 +105,5 @@ struct AddToDoView: View {
         }
     }
 }
-    
-#Preview {
-    AddToDoView()
-}
 
-    
 
