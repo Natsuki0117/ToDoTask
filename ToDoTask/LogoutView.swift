@@ -41,3 +41,4 @@ struct LogoutView: View {
 }
 
 //こっちがユーザーが匿名の方
+//test
