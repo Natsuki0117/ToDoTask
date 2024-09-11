@@ -40,3 +40,4 @@ struct LogoutView: View {
     LogoutView().environmentObject(AuthViewModel())
 }
 
+//こっちがユーザーが匿名の方
