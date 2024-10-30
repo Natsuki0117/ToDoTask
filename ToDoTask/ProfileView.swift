@@ -16,11 +16,7 @@ struct ProfileView: View {
         NavigationView{
             LazyVStack{
                 ForEach(tasks) { task in
-//                    Table(tasks) {
-//                           TableColumn("title") {  in
-                               Text(TaskItem.title)
-                           }
-//                       }
+                    Text(task.name)
                     
                 }
             }
