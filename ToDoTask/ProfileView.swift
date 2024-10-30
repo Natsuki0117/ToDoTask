@@ -6,25 +6,38 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct ProfileView: View {
     @State private var isShowingSheet = false
+    @State var tasks: [TaskItem] = []
     var body: some View {
         NavigationView{
-            VStack{
-                Text("aaa")
+            LazyVStack{
+                ForEach(tasks) { task in
+//                    Table(tasks) {
+//                           TableColumn("title") {  in
+                               Text(TaskItem.title)
+                           }
+//                       }
+                    
+                }
             }
             .toolbar{
                 Button{
                     isShowingSheet.toggle()
                 }label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "pencil.circle")
                 }
             }
             .navigationTitle("Profile")
         }
         .sheet(isPresented: $isShowingSheet) {
             AddToDoView()
+        }
+        .task {
+            tasks = await FirestoreClient.fetchUserWishes()
         }
     }
 }

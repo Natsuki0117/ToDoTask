@@ -7,13 +7,24 @@
 
 import FirebaseFirestore
 
-struct TaskItem: Codable {
+struct TaskItem: Codable, Identifiable {
     @DocumentID var id: String?
-    var userid: String
+    var userId: String
     var name: String
     var slider: Double
     var title: String
     var dueDate: Date
+    var doTime: Int
+    
+    init(id: String? = nil, userId: String = "", name: String, slider: Double, title: String, dueDate: Date, doTime: Int) {
+        self.id = id
+        self.userId = userId
+        self.name = name
+        self.slider = slider
+        self.title = title
+        self.dueDate = dueDate
+        self.doTime = doTime
+    }
 }
 
 extension Encodable {

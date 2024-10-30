@@ -13,6 +13,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
+        FirebaseAuthManager.anonymousSignIn()
         // ここで匿名サインインを行う場合は、ViewModelを作成してから呼び出す必要があります。
         return true
     }
