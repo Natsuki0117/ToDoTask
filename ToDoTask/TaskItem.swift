@@ -11,12 +11,12 @@ struct TaskItem: Codable, Identifiable {
     @DocumentID var id: String?
     var userId: String
     var name: String
-    var slider: Double
+    var slider: String
     var title: String
     var dueDate: Date
     var doTime: Int
     
-    init(id: String? = nil, userId: String = "", name: String, slider: Double, title: String, dueDate: Date, doTime: Int) {
+    init(id: String? = nil, userId: String = "", name: String, slider: String, title: String, dueDate: Date, doTime: Int) {
         self.id = id
         self.userId = userId
         self.name = name

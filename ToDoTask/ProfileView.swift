@@ -14,11 +14,16 @@ struct ProfileView: View {
     @State var tasks: [TaskItem] = []
     var body: some View {
         NavigationView{
-            LazyVStack{
+
                 ForEach(tasks) { task in
-                    Text(task.name)
-                    
-                }
+                    List{
+                        HStack {
+                            Text(task.name)
+                            Text(task.slider)
+                              
+                        }
+                    }
+                
             }
             .toolbar{
                 Button{

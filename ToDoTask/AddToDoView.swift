@@ -67,7 +67,7 @@ struct AddToDoView: View {
 //                     Firestoreにデータを保存
 //                    FirestoreClient.add(taskName: title, sliderValue: Double(moodLevel), taskTitle: "Task", dueDate: dueDate, doTime: doTime)
                     
-                    FirestoreClient.add(taskItem: TaskItem(name: title, slider:  Double(moodLevel),  title: "Task", dueDate: dueDate, doTime: Int(doTime)!))
+                    FirestoreClient.add(taskItem: TaskItem(name: title, slider:  String(moodLevel),  title: "Task", dueDate: dueDate, doTime: Int(doTime)!))
                     
                     print("Title: \(title)")
                     print("Due Date: \(dueDate)")
