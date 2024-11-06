@@ -14,15 +14,12 @@ struct ProfileView: View {
     @State var tasks: [TaskItem] = []
     var body: some View {
         NavigationView{
-
-                ForEach(tasks) { task in
-                    List{
+                List(tasks) { task in
+                    
                         HStack {
                             Text(task.name)
                             Text(task.slider)
-                              
                         }
-                    }
                 
             }
             .toolbar{
