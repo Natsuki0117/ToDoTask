@@ -11,16 +11,19 @@ import FirebaseAuth
 
 struct ProfileView: View {
     @State private var isShowingSheet = false
+    @State var ShowingAlert = false
+    @State var SelectedTask: TaskItem?
     @State var tasks: [TaskItem] = []
     var body: some View {
         NavigationView{
-                List(tasks) { task in
+            List(tasks) { task in
+                Button {
+                    SelectedTask = task
+                    ShowingAlert = true
+                } label: {
+                    Text(task.name)
                     
-                        HStack {
-                            Text(task.name)
-                            Text(task.slider)
-                        }
-                
+                }
             }
             .toolbar{
                 Button{
@@ -33,6 +36,16 @@ struct ProfileView: View {
         }
         .sheet(isPresented: $isShowingSheet) {
             AddToDoView()
+        }
+        .alert(SelectedTask?.name ?? "", isPresented: $ShowingAlert, presenting: SelectedTask) { task in
+            Button("Cancel", role: .none) {
+                
+            }
+        } message: { task in
+            Text("\(SelectedTask?.doTime ?? 0) 分")
+//            Text("\(SelectedTask!.doTime) 分")
+//            SelectedTaskに数字が入るって信じれる場合ならこっちでもok
+        
         }
         .task {
             tasks = await FirestoreClient.fetchUserWishes()
