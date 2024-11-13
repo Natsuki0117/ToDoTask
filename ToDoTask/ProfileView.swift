@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 import FirebaseAuth
+import FSCalendar
 
 struct ProfileView: View {
     @State private var isShowingSheet = false
@@ -25,6 +26,7 @@ struct ProfileView: View {
                     
                 }
             }
+
             .toolbar{
                 Button{
                     isShowingSheet.toggle()
@@ -47,10 +49,13 @@ struct ProfileView: View {
 //            SelectedTaskに数字が入るって信じれる場合ならこっちでもok
         
         }
+        
+      
         .task {
             tasks = await FirestoreClient.fetchUserWishes()
         }
     }
+
 }
 
 #Preview {
