@@ -15,18 +15,25 @@ struct ProfileView: View {
     @State var ShowingAlert = false
     @State var SelectedTask: TaskItem?
     @State var tasks: [TaskItem] = []
+
+  
     var body: some View {
+     
         NavigationView{
+            CalendarView()
+                       .frame(height: 300) // カレンダーの高さを設定
+                       .padding()
+
+            
             List(tasks) { task in
                 Button {
                     SelectedTask = task
                     ShowingAlert = true
                 } label: {
                     Text(task.name)
-                    
                 }
             }
-
+            
             .toolbar{
                 Button{
                     isShowingSheet.toggle()
@@ -58,7 +65,15 @@ struct ProfileView: View {
 
 }
 
+struct CalendarView: UIViewRepresentable {
+    func makeUIView(context: Context) -> FSCalendar {
+        return FSCalendar()
+    }
+    
+    func updateUIView(_ uiView: FSCalendar, context: Context) {
+        // 必要な設定があればここで行う
+    }
+}
 #Preview {
     ProfileView()
 }
-
