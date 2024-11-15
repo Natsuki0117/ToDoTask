@@ -20,20 +20,23 @@ struct ProfileView: View {
     var body: some View {
         VStack{
             NavigationView{
-                
-                List(tasks) { task in
-                    Button {
-                        SelectedTask = task
-                        ShowingAlert = true
-                    } label: {
-                        Text(task.name)
+              
+                    CalendarView()
+                        .frame(height: 150) // カレンダーの高さを設定
+                        .padding()
+              
+                    List(tasks) { task in
+                        Button {
+                            SelectedTask = task
+                            ShowingAlert = true
+                        } label: {
+                            Text(task.name)
+                        }
+                        .frame(maxHeight: .infinity)
                     }
-                }
+                
             }
-                CalendarView()
-                    .frame(height: 150) // カレンダーの高さを設定
-                    .padding()
-            
+                            
         }
             .toolbar{
                 Button{
