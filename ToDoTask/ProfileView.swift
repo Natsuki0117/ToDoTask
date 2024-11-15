@@ -18,22 +18,23 @@ struct ProfileView: View {
 
   
     var body: some View {
-     
-        NavigationView{
-            CalendarView()
-                       .frame(height: 300) // カレンダーの高さを設定
-                       .padding()
-
-            
-            List(tasks) { task in
-                Button {
-                    SelectedTask = task
-                    ShowingAlert = true
-                } label: {
-                    Text(task.name)
+        VStack{
+            NavigationView{
+                
+                List(tasks) { task in
+                    Button {
+                        SelectedTask = task
+                        ShowingAlert = true
+                    } label: {
+                        Text(task.name)
+                    }
                 }
             }
+                CalendarView()
+                    .frame(height: 150) // カレンダーの高さを設定
+                    .padding()
             
+        }
             .toolbar{
                 Button{
                     isShowingSheet.toggle()
@@ -42,7 +43,7 @@ struct ProfileView: View {
                 }
             }
             .navigationTitle("Profile")
-        }
+        
         .sheet(isPresented: $isShowingSheet) {
             AddToDoView()
         }
