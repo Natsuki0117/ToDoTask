@@ -20,11 +20,12 @@ struct ProfileView: View {
     var body: some View {
         VStack{
             NavigationView{
-              
-                    CalendarView()
-                        .frame(height: 150) // カレンダーの高さを設定
-                        .padding()
-              
+                
+                CalendarView()
+                    .frame(height: 300) // カレンダーの高さを設定
+                    .padding()
+                
+            }
                     List(tasks) { task in
                         Button {
                             SelectedTask = task
@@ -34,9 +35,7 @@ struct ProfileView: View {
                         }
                         .frame(maxHeight: .infinity)
                     }
-                
-            }
-                            
+              
         }
             .toolbar{
                 Button{
