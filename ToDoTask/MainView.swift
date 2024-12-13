@@ -13,14 +13,7 @@ struct MainView: View {
             
            
             VStack {
-//                Button(action: {
-//                    vm.logout() // logoutメソッドを呼び出す
-//                }) {
-//                    Text("Logout")
-//                        .foregroundColor(.red)
-//                }
-//                .padding() // パディングを追加して余白を確保
-                
+
                 TabView {
                     ProfileView()
                         .tabItem {

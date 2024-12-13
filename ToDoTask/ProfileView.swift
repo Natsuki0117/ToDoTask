@@ -18,34 +18,35 @@ struct ProfileView: View {
 
   
     var body: some View {
-        VStack{
+      
             NavigationView{
-                
+               
+                VStack{
                 CalendarView()
                     .frame(height: 300) // カレンダーの高さを設定
                     .padding()
                 
-            }
-                    List(tasks) { task in
-                        Button {
-                            SelectedTask = task
-                            ShowingAlert = true
-                        } label: {
-                            Text(task.name)
+                    .toolbar{
+                        Button{
+                            isShowingSheet.toggle()
+                        }label: {
+                            Image(systemName: "pencil.circle")
                         }
-                        .frame(maxHeight: .infinity)
                     }
-              
-        }
-            .toolbar{
-                Button{
-                    isShowingSheet.toggle()
-                }label: {
-                    Image(systemName: "pencil.circle")
+                
+                List(tasks) { task in
+                    Button {
+                        SelectedTask = task
+                        ShowingAlert = true
+                    } label: {
+                        Text(task.name)
+                    }
+                    .frame(maxHeight: .infinity)
                 }
+
+                .navigationTitle("Profile")
             }
-            .navigationTitle("Profile")
-        
+        }
         .sheet(isPresented: $isShowingSheet) {
             AddToDoView()
         }
