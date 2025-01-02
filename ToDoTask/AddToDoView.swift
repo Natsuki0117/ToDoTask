@@ -112,4 +112,9 @@ struct AddToDoView: View {
     }
 }
 
+#Preview{
+    AddToDoView()
+    
+}
+
 

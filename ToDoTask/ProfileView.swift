@@ -23,7 +23,7 @@ struct ProfileView: View {
                
                 VStack{
                 CalendarView()
-                    .frame(height: 300) // カレンダーの高さを設定
+                    .frame(height: 250) // カレンダーの高さを設定
                     .padding()
                 
                     .toolbar{
@@ -44,24 +44,21 @@ struct ProfileView: View {
                     .frame(maxHeight: .infinity)
                 }
 
-                .navigationTitle("Profile")
             }
         }
         .sheet(isPresented: $isShowingSheet) {
             AddToDoView()
         }
+
+        
         .alert(SelectedTask?.name ?? "", isPresented: $ShowingAlert, presenting: SelectedTask) { task in
-            Button("Cancel", role: .none) {
-                
+            Button("Do", role: .destructive) {
+                isShowingSheet = true // シートを表示
             }
         } message: { task in
             Text("\(SelectedTask?.doTime ?? 0) 分")
-//            Text("\(SelectedTask!.doTime) 分")
-//            SelectedTaskに数字が入るって信じれる場合ならこっちでもok
-        
         }
-        
-      
+
         .task {
             tasks = await FirestoreClient.fetchUserWishes()
         }
