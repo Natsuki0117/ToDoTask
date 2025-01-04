@@ -11,10 +11,9 @@ struct DoTaskView: View {
     var body: some View {
         NavigationView{
             VStack{
-//                SliderView()
-                EmptyView()
+Text("aaa")
             }
-            .navigationTitle("AI　タスク選定")
+            .navigationTitle("DoTaskView")
         }
     }
 }
