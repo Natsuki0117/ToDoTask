@@ -46,9 +46,14 @@ struct ProfileView: View {
 
             }
         }
-        .sheet(isPresented: $isShowingSheet) {
-            DoTaskView()
-        }
+            .sheet(isPresented: $isShowingSheet) {
+                if let task = SelectedTask {
+                    TimerView(counter: 0, countTo: task.doTime)
+                } else {
+                    Text("No task selected.")
+                }
+            }
+
 
         
         .alert(SelectedTask?.name ?? "", isPresented: $ShowingAlert, presenting: SelectedTask) { task in
