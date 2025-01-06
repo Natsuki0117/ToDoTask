@@ -5,6 +5,7 @@ let timer = Timer
     .publish(every: 1, on: .main, in: .common)
     .autoconnect()
 
+
 // タイマーのビュー
 struct TimerView: View {
     var counter: Int
@@ -15,6 +16,7 @@ struct TimerView: View {
             Text(counterToMinutes())
                 .font(.custom("Avenir Next", size: 60))
                 .fontWeight(.black)
+
         }
     }
 
@@ -35,7 +37,10 @@ struct ProgressTrack: View {
             .overlay(
                 Circle().stroke(Color.black, lineWidth: 15)
             )
+
+        
     }
+    
 }
 
 // 進行状況を示すバー（動く部分）
@@ -92,11 +97,33 @@ struct CountdownView: View {
     }
 }
 
-// プレビュー
+//preview
 struct CountdownView_Previews: PreviewProvider {
+    @State var counter: Int = 0
     static var previews: some View {
-        CountdownView(task: TaskItem(name: "Sample Task", slider: "50", title: "Example", dueDate: Date(), doTime: 300))
+        VStack{
+            CountdownView(task: TaskItem(name: "Sample Task", slider: "50", title: "Example", dueDate: Date(), doTime: 10))
+            
+            Button(action: {
+                
+                print("ボタン押せてるよーーー!")
+            },label:{
+                Text("aaa")
+                    .frame(width: UIScreen.main.bounds.size.width / 8 * 4,
+                                   height: UIScreen.main.bounds.size.width / 14 * 1)            })
+    //            button size
+            .padding()
+            .accentColor(Color.white)
+            .background(Color.blue)
+            .cornerRadius(50)
+            .shadow(color: Color.purple, radius: 15, x: 0, y: 5)
+            
+//この辺でボタンの装飾の処理できる、適当につけてる
+        }
     }
+    
+
+
 }
 
 // タスクを表すデータモデル
